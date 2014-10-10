@@ -5,6 +5,9 @@ sudo add-apt-repository -y "deb http://dl.google.com/linux/chrome/deb/ stable ma
 sudo add-apt-repository -y "deb http://dl.google.com/linux/talkplugin/deb/ stable main"
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
+#LibreOffice
+sudo add-apt-repository -y ppa:libreoffice/ppa
+
 #WebUpd8 Java 8
 sudo add-apt-repository -y ppa:webupd8team/java
 #Set JAVA_HOME
