@@ -27,7 +27,7 @@ sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 sudo apt-get update && sudo apt-get -y upgrade
 
 #Install my packages
-sudo apt-get -y install ubuntu-restricted-extras p7zip unity-tweak-tool vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom numix-gtk-theme numix-icon-theme-circle numix-wallpaper-aurora
+sudo apt-get -y install vim ubuntu-restricted-extras p7zip unity-tweak-tool vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom numix-gtk-theme numix-icon-theme-circle numix-wallpaper-aurora
 
 #Git setup
 git config --global user.name "Angelos Panagiotopoulos"
