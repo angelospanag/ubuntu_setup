@@ -1,6 +1,7 @@
 #!/bin/sh
 
-usage() {
+usage() 
+{
   #Printing help message
 
   echo "Usage: $0 [-d <ubuntu|xubuntu>] [-g <nvidia|bumblebee>] [-h] [-p]
@@ -78,7 +79,6 @@ while getopts ":d:g:hp" option; do
 
       #Setup git account
       gitsetup
-
     elif [$s=="xubuntu"]
       then
       echo "Installing Xubuntu packages"
@@ -117,7 +117,7 @@ while getopts ":d:g:hp" option; do
 
     #Extract zip to home folder
     cd Downloads
-    unzip file.zip -d ${HOME}
+    unzip typesafe-activator-1.2.10.zip -d ${HOME}
 
     #Add activator directory to PATH
     echo "PATH DEFAULT=${PATH}:${HOME}/activator-1.2.10" >> $HOME/.pam_environment
