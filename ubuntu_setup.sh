@@ -84,7 +84,7 @@ while getopts ":d:g:hp" option; do
       repositories
 
       #Install Ubuntu packages
-      sudo apt-get -y install vim ubuntu-restricted-extras p7zip unity-tweak-tool vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-developer-tools-center
+      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-developer-tools-center
 
       #Setup git account
       gitsetup
