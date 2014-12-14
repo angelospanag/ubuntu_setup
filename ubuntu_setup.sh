@@ -23,8 +23,8 @@ repositories()
   sudo add-apt-repository -y "deb http://dl.google.com/linux/talkplugin/deb/ stable main"
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
-  #Ubuntu Developer Tools Center
-  sudo add-apt-repository -y ppa:didrocks/ubuntu-developer-tools-center
+  #Ubuntu Make
+  sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
   
   #Transmission
   sudo add-apt-repository -y ppa:transmissionbt/ppa
@@ -49,6 +49,9 @@ repositories()
 
   #Wine
   sudo add-apt-repository -y ppa:ubuntu-wine/ppa
+  
+  #Xorg-edgers (for latest Nvidia drivers)
+  sudo add-apt-repository -y ppa:xorg-edgers/ppa
 
   #Update repositories
   sudo apt-get update
@@ -84,7 +87,7 @@ while getopts ":d:g:hp" option; do
       repositories
 
       #Install Ubuntu packages
-      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-developer-tools-center
+      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-make
 
       #Setup git account
       gitsetup
@@ -95,7 +98,7 @@ while getopts ":d:g:hp" option; do
       repositories
 
       #Install Xubuntu packages
-      sudo apt-get -y install vim xubuntu-restricted-extras p7zip libreoffice geany vlc steam pidgin-otr git guake zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-developer-tools-center
+      sudo apt-get -y install vim xubuntu-restricted-extras p7zip libreoffice geany vlc steam pidgin-otr git guake zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-make
 
       #Setup git account
       gitsetup
