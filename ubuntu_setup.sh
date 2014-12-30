@@ -42,6 +42,9 @@ repositories()
 
   #WebUpd8 Atom
   sudo add-apt-repository -y ppa:webupd8team/atom
+  
+  #WebUpd8 tor-browser
+  sudo add-apt-repository -y ppa:webupd8team/tor-browser
 
   #Spotify
   sudo add-apt-repository -y "deb http://repository.spotify.com stable non-free"
@@ -87,7 +90,7 @@ while getopts ":d:g:hp" option; do
       repositories
 
       #Install Ubuntu packages
-      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-make
+      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom tor-browser ubuntu-make
 
       #Setup git account
       gitsetup
@@ -98,7 +101,7 @@ while getopts ":d:g:hp" option; do
       repositories
 
       #Install Xubuntu packages
-      sudo apt-get -y install vim xubuntu-restricted-extras p7zip libreoffice geany vlc steam pidgin-otr git guake zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom ubuntu-make
+      sudo apt-get -y install vim xubuntu-restricted-extras p7zip libreoffice geany vlc steam pidgin-otr git guake zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom tor-browser ubuntu-make
 
       #Setup git account
       gitsetup
