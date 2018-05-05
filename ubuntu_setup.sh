@@ -1,147 +1,92 @@
-#!/bin/sh
+# Install basic software
+sudo apt install -y kubuntu-restricted-extras curl zsh build-essential vim git jq python3-pip golang wireshark nmap pwgen fortune cowsay lolcat sl steam vlc
 
-usage() 
-{
-  #Printing help message
+# OhMyZsh
+curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+bash install.sh
 
-  echo "Usage: $0 [-d <ubuntu|xubuntu>] [-g <nvidia|bumblebee>] [-h] [-p]
+# Node
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 
-  where:
+# Nvidia
+sudo add-apt-repository -y ppa:graphics-drivers/ppa
 
-  -d : Choose setup between Ubuntu and Xubuntu
-  -g : Install either vanilla Nvidia drivers or nvidia-bumblebee (Optimus)
-  -h : Prints this help message
-  -p : Installs Play Framework" 1>&2; exit 1;
-}
+# Razer
+sudo add-apt-repository -y ppa:openrazer/stable
+sudo add-apt-repository -y ppa:polychromatic/stable
 
-repositories()
-{
-  echo "Adding repositories..."
+# Yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-  #Google Chrome and Talk Plugin
-  sudo add-apt-repository -y "deb http://dl.google.com/linux/chrome/deb/ stable main"
-  sudo add-apt-repository -y "deb http://dl.google.com/linux/talkplugin/deb/ stable main"
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 
-  #Ubuntu Make
-  sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
-  
-  #Transmission
-  sudo add-apt-repository -y ppa:transmissionbt/ppa
-  
-  #Pidgin
-  sudo add-apt-repository -y ppa:pidgin-developers/ppa
+# Visual Studio Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-  #LibreOffice
-  sudo add-apt-repository -y ppa:libreoffice/ppa
+# Signal Desktop
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
-  #WebUpd8 Java 8
-  sudo add-apt-repository -y ppa:webupd8team/java
-  #Set JAVA_HOME
-  echo "JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> $HOME/.pam_environment
+# Install extra software
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y code docker-ce openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-396
 
-  #WebUpd8 Atom
-  sudo add-apt-repository -y ppa:webupd8team/atom
-  
-  #WebUpd8 tor-browser
-  sudo add-apt-repository -y ppa:webupd8team/tor-browser
+# Visual Studio Code extensions
+code --install-extension CoenraadS.bracket-pair-colorizer
+code --install-extension PeterJausovec.vscode-docker
+code --install-extension bungcip.better-toml
+code --install-extension codezombiech.gitignore
+code --install-extension coolbear.systemd-unit-file
+code --install-extension cstrap.flask-snippets
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension eg2.vscode-npm-script
+code --install-extension lukehoban.Go
+code --install-extension mikestead.dotenv
+code --install-extension ms-python.python
+code --install-extension naereen.makefiles-support-for-vscode
+code --install-extension njpwerner.autodocstring
+code --install-extension robertohuertasm.vscode-icons
+code --install-extension stevejpurves.cucumber
 
-  #Spotify
-  sudo add-apt-repository -y "deb http://repository.spotify.com stable non-free"
-  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+# I have horrible humour
+echo "fortune | cowsay -f dragon | lolcat" >> ~/.zshrc
 
-  #Wine
-  sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-  
-  #Xorg-edgers (for latest Nvidia drivers)
-  sudo add-apt-repository -y ppa:xorg-edgers/ppa
+# Python user base directory
+echo "export PATH=\$HOME/.local/bin:\"\$PATH\"" >> ~/.zshrc
+source  ~/.zshrc
 
-  #Update repositories
-  sudo apt-get update
-}
+# AWS
+pip3 install --upgrade --user awscli 
 
-gitsetup()
-{
-  echo "Setting up git account..."
+# Pipenv
+pip3 install --upgrade --user pipenv
 
-  #Git setup
-  git config --global user.name "Angelos Panagiotopoulos"
-  git config --global user.email "angelospanag@gmail.com"
-}
 
-#If no arguments are passed, print help and exit
-if [ $# -eq 0 ]; then
-    usage
-    exit
-fi
+# Go
+mkdir -p ~/go/bin
+mkdir -p ~/go/src
+echo "export GOPATH=~/go" >> ~/.zshrc
+echo "export GOBIN=~/go/bin" >> ~/.zshrc
+echo "export PATH=\$GOBIN:\"\$PATH\"" >> ~/.zshrc
+source  ~/.zshrc
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v golang.org/x/lint/golint
 
-#Main functionality starts here
-while getopts ":d:g:hp" option; do
-  case $option in
-    d)
-    s=${OPTARG}
-    if [$s=="ubuntu"]
-      then
-      echo "Installing Ubuntu packages"
-      #Click to minimize for Unity launcher (to disable, run the same command with "false" instead of "true")
-      gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window true
+# Git config
+git config --global user.email "angelospanag@gmail.com"
+git config --global user.name "Angelos Panagiotopoulos"
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global commit.gpgsign true
 
-      #Add repositories
-      repositories
-
-      #Install Ubuntu packages
-      sudo apt-get -y install vim ubuntu-restricted-extras p7zip vlc steam pidgin pidgin-otr git guake indicator-multiload compizconfig-settings-manager zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom tor-browser ubuntu-make
-
-      #Setup git account
-      gitsetup
-    elif [$s=="xubuntu"]
-      then
-      echo "Installing Xubuntu packages"
-      #Add repositories
-      repositories
-
-      #Install Xubuntu packages
-      sudo apt-get -y install vim xubuntu-restricted-extras p7zip libreoffice geany vlc steam pidgin-otr git guake zenmap wireshark google-chrome-stable google-talkplugin spotify-client oracle-java8-installer atom tor-browser ubuntu-make
-
-      #Setup git account
-      gitsetup
-    else
-      usage; exit
-    fi
-    ;;
-    g)
-    s=${OPTARG}
-    if [$s=="nvidia"]
-      then
-      echo "Installing Nvidia drivers"
-      sudo apt-get -y install nvidia-current
-    elif [$s=="bumblebee"]
-      then
-      echo "Installing Nvidia drivers with bumblebee (laptops with Optimus)"
-      sudo apt-get -y install nvidia-current bumblebee-nvidia
-    else
-      usage; exit
-    fi
-    ;;
-    h)
-    usage; exit ;;
-    p)
-    echo "Downloading and installing Play Framework -- this will probably take a while..."
-    #Download Play Framework - activator 1.2.10
-    wget -P ${HOME}/Downloads http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10.zip
-
-    #Extract zip to home folder
-    cd Downloads
-    unzip typesafe-activator-1.2.10.zip -d ${HOME}
-
-    #Add activator directory to PATH
-    echo "PATH DEFAULT=${PATH}:${HOME}/activator-1.2.10" >> $HOME/.pam_environment
-    ;;
-    \?)
-    usage; exit ;;
-  esac
-done
-
-#Upgrade
-echo "Upgrading..."
-sudo apt-get -y upgrade
+# Vim config
+echo "syntax on" >> ~/.vimrc
+echo "set nu" >> ~/.vimrc
+echo "colorscheme elflord" >> ~/.vimrc
