@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y kubuntu-restricted-extras curl zsh build-essential vim git jq python3-pip golang wireshark nmap pwgen fortune cowsay lolcat sl steam vlc
+sudo apt install -y kubuntu-restricted-extras curl zsh build-essential vim git xserver-xorg-input-synaptics jq python3-pip golang wireshark nmap pwgen fortune cowsay lolcat sl steam vlc
 
 # OhMyZsh
 curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
@@ -68,7 +68,6 @@ pip3 install --upgrade --user awscli
 
 # Pipenv
 pip3 install --upgrade --user pipenv
-
 
 # Go
 mkdir -p ~/go/bin
