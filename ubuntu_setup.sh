@@ -53,6 +53,7 @@ code --install-extension mikestead.dotenv
 code --install-extension ms-python.python
 code --install-extension naereen.makefiles-support-for-vscode
 code --install-extension njpwerner.autodocstring
+code --install-extension patrys.vscode-code-outline
 code --install-extension robertohuertasm.vscode-icons
 code --install-extension stevejpurves.cucumber
 
