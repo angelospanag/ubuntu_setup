@@ -11,6 +11,10 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 # Nvidia
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 
+# Spotify
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
 # Razer
 sudo add-apt-repository -y ppa:openrazer/stable
 sudo add-apt-repository -y ppa:polychromatic/stable
@@ -18,13 +22,6 @@ sudo add-apt-repository -y ppa:polychromatic/stable
 # Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-# Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
 
 # Visual Studio Code
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -37,7 +34,7 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code docker-ce openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-396
+sudo apt install -y code openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-396 spotify-client
 
 # Visual Studio Code extensions
 code --install-extension CoenraadS.bracket-pair-colorizer
