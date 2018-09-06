@@ -67,6 +67,9 @@ pip3 install --upgrade --user awscli
 # Pipenv
 pip3 install --upgrade --user pipenv
 
+# Python linting tools
+pip3 install --upgrade --user flake8 pep8-naming
+
 # Go
 mkdir -p ~/go/bin
 mkdir -p ~/go/src
