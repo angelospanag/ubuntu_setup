@@ -6,7 +6,7 @@ curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
 bash install.sh
 
 # Node
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 
 # Nvidia
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
@@ -34,7 +34,7 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-396 spotify-client
+sudo apt install -y code openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-415 spotify-client
 
 # Visual Studio Code extensions
 code --install-extension CoenraadS.bracket-pair-colorizer
