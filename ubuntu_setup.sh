@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential vim git keepassx jq python3-pip golang wireshark nmap pwgen fortune cowsay lolcat sl steam vlc
+sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassx jq python3-pip golang wireshark nmap pwgen fortune cowsay lolcat sl steam vlc
 
 # OhMyZsh
 curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
@@ -32,9 +32,16 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
+# Wire
+wget -q https://wire-app.wire.com/linux/releases.key -O- | sudo apt-key add -
+echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sudo tee /etc/apt/sources.list.d/wire-desktop.list
+
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop nodejs yarn nvidia-driver-415 spotify-client
+sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs yarn nvidia-driver-418 spotify-client
+
+# Snaps
+sudo snap install pycharm-professional slack
 
 # Visual Studio Code extensions
 code --install-extension CoenraadS.bracket-pair-colorizer
@@ -68,7 +75,7 @@ pip3 install --upgrade --user awscli
 pip3 install --upgrade --user pipenv
 
 # Python linting tools
-pip3 install --upgrade --user flake8 pep8-naming
+pip3 install --upgrade --user flake8 pep8-naming autopep8
 
 # Go
 mkdir -p ~/go/bin
