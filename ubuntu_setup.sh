@@ -45,21 +45,19 @@ sudo snap install pycharm-professional slack
 
 # Visual Studio Code extensions
 code --install-extension CoenraadS.bracket-pair-colorizer
-code --install-extension PeterJausovec.vscode-docker
 code --install-extension bungcip.better-toml
 code --install-extension codezombiech.gitignore
-code --install-extension coolbear.systemd-unit-file
-code --install-extension cstrap.flask-snippets
+code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension dbaeumer.vscode-eslint
-code --install-extension eg2.vscode-npm-script
-code --install-extension lukehoban.Go
+code --install-extension GrapeCity.gc-excelviewer
+code --install-extension mechatroner.rainbow-csv
 code --install-extension mikestead.dotenv
 code --install-extension ms-python.python
+code --install-extension ms-vscode.Go
 code --install-extension naereen.makefiles-support-for-vscode
-code --install-extension njpwerner.autodocstring
-code --install-extension patrys.vscode-code-outline
-code --install-extension robertohuertasm.vscode-icons
-code --install-extension stevejpurves.cucumber
+code --install-extension oderwat.indent-rainbow
+code --install-extension PeterJausovec.vscode-docker
+code --install-extension vscode-icons-team.vscode-icons
 
 # I have horrible humour
 echo "fortune | cowsay -f dragon | lolcat" >> ~/.zshrc
