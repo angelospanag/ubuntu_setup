@@ -11,10 +11,6 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 # Nvidia
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 
-# Spotify
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
 # Razer
 sudo add-apt-repository -y ppa:openrazer/stable
 sudo add-apt-repository -y ppa:polychromatic/stable
@@ -41,12 +37,10 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs yarn nvidia-driver-418 spotify-client
 
 # Snaps
-sudo snap install pycharm-professional slack
+sudo snap install slack spotify 
+sudo snap install pycharm-professional --classic
 
-# Visual Studio Code extensionswget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-
+# Visual Studio Code extensions
 code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension bungcip.better-toml
 code --install-extension codezombiech.gitignore
