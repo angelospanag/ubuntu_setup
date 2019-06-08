@@ -1,12 +1,12 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassx jq python3-pip golang wireshark nmap pwgen steam vlc
+sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassx jq python3-pip wireshark nmap pwgen steam
 
 # OhMyZsh
 curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
 bash install.sh
 
 # Node
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 # Nvidia
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
@@ -43,7 +43,10 @@ sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-deskto
 # Snaps
 sudo snap install pycharm-professional slack
 
-# Visual Studio Code extensions
+# Visual Studio Code extensionswget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
+
 code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension bungcip.better-toml
 code --install-extension codezombiech.gitignore
@@ -73,6 +76,9 @@ pip3 install --upgrade --user pipenv
 pip3 install --upgrade --user flake8 pep8-naming autopep8
 
 # Go
+wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
 mkdir -p ~/go/bin
 mkdir -p ~/go/src
 echo "export GOPATH=~/go" >> ~/.zshrc
