@@ -15,6 +15,10 @@ sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo add-apt-repository -y ppa:openrazer/stable
 sudo add-apt-repository -y ppa:polychromatic/stable
 
+# Spotify
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
 # Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -34,10 +38,10 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs yarn nvidia-driver-430
+sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs yarn nvidia-driver-430 spotify-client
 
 # Snaps
-sudo snap install slack spotify 
+sudo snap install slack 
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
