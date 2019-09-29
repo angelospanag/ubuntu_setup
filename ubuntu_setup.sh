@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https vim git fonts-firacode keepassx jq python3-pip wireshark nmap pwgen steam
+sudo apt install -y curl zsh build-essential apt-transport-https vim git tilix fonts-firacode keepassx jq python3-pip python3-venv wireshark nmap pwgen steam
 
 # OhMyZsh
 curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
