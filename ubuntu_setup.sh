@@ -40,6 +40,7 @@ sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-deskto
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
+code --install-extension bungcip.better-toml
 code --install-extension codezombiech.gitignore
 code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension dbaeumer.vscode-eslint
