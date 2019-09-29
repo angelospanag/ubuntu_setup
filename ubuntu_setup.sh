@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassx jq python3-pip wireshark nmap pwgen steam
+sudo apt install -y curl zsh build-essential apt-transport-https vim git fonts-firacode keepassx jq python3-pip wireshark nmap pwgen steam
 
 # OhMyZsh
 curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
@@ -61,6 +61,7 @@ pip3 install --upgrade --user awscli
 
 # Pipenv
 pip3 install --upgrade --user pipenv
+echo "export PIPENV_VENV_IN_PROJECT=1" >> ~/.zshrc
 
 # Python linting tools
 pip3 install --upgrade --user flake8 pep8-naming autopep8
