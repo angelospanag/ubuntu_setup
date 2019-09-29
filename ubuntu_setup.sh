@@ -16,17 +16,13 @@ sudo add-apt-repository -y ppa:openrazer/stable
 sudo add-apt-repository -y ppa:polychromatic/stable
 
 # Spotify
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
-# Yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
 # Visual Studio Code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
 # Signal Desktop
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
@@ -38,19 +34,15 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs yarn nvidia-driver-430 spotify-client
+sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-430 spotify-client
 
 # Snaps
-sudo snap install slack 
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
-code --install-extension CoenraadS.bracket-pair-colorizer
-code --install-extension bungcip.better-toml
 code --install-extension codezombiech.gitignore
 code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension dbaeumer.vscode-eslint
-code --install-extension GrapeCity.gc-excelviewer
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mikestead.dotenv
 code --install-extension ms-python.python
@@ -74,8 +66,8 @@ pip3 install --upgrade --user pipenv
 pip3 install --upgrade --user flake8 pep8-naming autopep8
 
 # Go
-wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.13.1.linux-amd64.tar.gz
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
 mkdir -p ~/go/bin
 mkdir -p ~/go/src
