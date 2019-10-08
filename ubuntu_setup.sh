@@ -34,7 +34,7 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-430 spotify-client
+sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-435 spotify-client
 
 # Snaps
 sudo snap install pycharm-professional --classic
