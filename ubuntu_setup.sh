@@ -34,7 +34,7 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-435 spotify-client
+sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-440 spotify-client
 
 # Snaps
 sudo snap install pycharm-professional --classic
@@ -53,23 +53,15 @@ code --install-extension oderwat.indent-rainbow
 code --install-extension PeterJausovec.vscode-docker
 code --install-extension vscode-icons-team.vscode-icons
 
-# Python user base directory
+# Python
 echo "export PATH=\$HOME/.local/bin:\"\$PATH\"" >> ~/.zshrc
+echo "export POETRY_VIRTUALENVS_IN_PROJECT" >> ~/.zshrc
 source  ~/.zshrc
-
-# AWS
-pip3 install --upgrade --user awscli 
-
-# Pipenv
-pip3 install --upgrade --user pipenv
-echo "export PIPENV_VENV_IN_PROJECT=1" >> ~/.zshrc
-
-# Python linting tools
-pip3 install --upgrade --user flake8 pep8-naming autopep8
+pip3 install --upgrade --user poetry flake8 pep8-naming autopep8
 
 # Go
-wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.13.1.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.14.2.linux-amd64.tar.gz
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
 mkdir -p ~/go/bin
 mkdir -p ~/go/src
@@ -77,8 +69,6 @@ echo "export GOPATH=~/go" >> ~/.zshrc
 echo "export GOBIN=~/go/bin" >> ~/.zshrc
 echo "export PATH=\$GOBIN:\"\$PATH\"" >> ~/.zshrc
 source  ~/.zshrc
-go get -u -v golang.org/x/tools/cmd/goimports
-go get -u -v golang.org/x/lint/golint
 
 # Git config
 git config --global user.email "angelospanag@gmail.com"
