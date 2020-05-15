@@ -60,14 +60,9 @@ source  ~/.zshrc
 pip3 install --upgrade --user poetry flake8 pep8-naming autopep8
 
 # Go
-wget https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.14.2.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-mkdir -p ~/go/bin
-mkdir -p ~/go/src
-echo "export GOPATH=~/go" >> ~/.zshrc
-echo "export GOBIN=~/go/bin" >> ~/.zshrc
-echo "export PATH=\$GOBIN:\"\$PATH\"" >> ~/.zshrc
 source  ~/.zshrc
 
 # Git config
