@@ -6,7 +6,7 @@ curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
 bash install.sh
 
 # Node
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 # Nvidia
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
@@ -41,16 +41,18 @@ sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
 code --install-extension bungcip.better-toml
-code --install-extension codezombiech.gitignore
-code --install-extension CoenraadS.bracket-pair-colorizer
+code --install-extension CoenraadS.bracket-pair-colorizer-2
 code --install-extension dbaeumer.vscode-eslint
+code --install-extension hashicorp.terraform
+code --install-extension kdcro101.favorites
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mikestead.dotenv
+code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-python.python
-code --install-extension ms-vscode.Go
-code --install-extension naereen.makefiles-support-for-vscode
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-toolsai.jupyter
+code --install-extension njpwerner.autodocstring
 code --install-extension oderwat.indent-rainbow
-code --install-extension PeterJausovec.vscode-docker
 code --install-extension vscode-icons-team.vscode-icons
 
 # Python
@@ -59,14 +61,8 @@ echo "export POETRY_VIRTUALENVS_IN_PROJECT" >> ~/.zshrc
 source  ~/.zshrc
 pip3 install --upgrade --user poetry flake8 pep8-naming autopep8
 
-# Go
-wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-source  ~/.zshrc
-
 # Git config
-git config --global user.email "angelospanag@gmail.com"
+git config --global user.email "angelospanag@protonmail.com"
 git config --global user.name "Angelos Panagiotopoulos"
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 git config --global commit.gpgsign true
