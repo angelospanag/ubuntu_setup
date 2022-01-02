@@ -1,32 +1,28 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https vim git tilix fonts-firacode keepassx jq python3-pip python3-venv wireshark nmap pwgen steam
+sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassxc jq python3-pip python3-venv wireshark nmap pwgen steam software-properties-gtk
 
 # OhMyZsh
-curl -OL https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 bash install.sh
 
 # Node
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-
-# Nvidia
-sudo add-apt-repository -y ppa:graphics-drivers/ppa
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 # Razer
-sudo add-apt-repository -y ppa:openrazer/stable
-sudo add-apt-repository -y ppa:polychromatic/stable
-
-# Spotify
-curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo add-apt-repository ppa:openrazer/stable
+sudo add-apt-repository ppa:polychromatic/stable
 
 # Visual Studio Code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
 
 # Signal Desktop
-curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
+  sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
 # Wire
 wget -q https://wire-app.wire.com/linux/releases.key -O- | sudo apt-key add -
@@ -34,17 +30,15 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code openrazer-meta polychromatic signal-desktop wire-desktop nodejs nvidia-driver-440 spotify-client
+sudo apt install -y code signal-desktop wire-desktop nodejs openrazer-meta
 
 # Snaps
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
 code --install-extension bungcip.better-toml
-code --install-extension CoenraadS.bracket-pair-colorizer-2
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension hashicorp.terraform
-code --install-extension kdcro101.favorites
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mikestead.dotenv
 code --install-extension ms-azuretools.vscode-docker
@@ -53,13 +47,14 @@ code --install-extension ms-python.vscode-pylance
 code --install-extension ms-toolsai.jupyter
 code --install-extension njpwerner.autodocstring
 code --install-extension oderwat.indent-rainbow
-code --install-extension vscode-icons-team.vscode-icons
+code --install-extension PKief.material-icon-theme
+
 
 # Python
 echo "export PATH=\$HOME/.local/bin:\"\$PATH\"" >> ~/.zshrc
-echo "export POETRY_VIRTUALENVS_IN_PROJECT" >> ~/.zshrc
+echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
 source  ~/.zshrc
-pip3 install --upgrade --user poetry flake8 pep8-naming autopep8
+pip3 install -U --user poetry flake8 pep8-naming black
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
