@@ -31,6 +31,7 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 # Install extra software
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y code signal-desktop wire-desktop nodejs openrazer-meta polychromatic
+sudo gpasswd -a $USER plugdev
 
 # Snaps
 sudo snap install pycharm-professional --classic
