@@ -30,7 +30,7 @@ echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sud
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code signal-desktop wire-desktop nodejs openrazer-meta
+sudo apt install -y code signal-desktop wire-desktop nodejs openrazer-meta polychromatic
 
 # Snaps
 sudo snap install pycharm-professional --classic
@@ -48,7 +48,6 @@ code --install-extension ms-toolsai.jupyter
 code --install-extension njpwerner.autodocstring
 code --install-extension oderwat.indent-rainbow
 code --install-extension PKief.material-icon-theme
-
 
 # Python
 echo "export PATH=\$HOME/.local/bin:\"\$PATH\"" >> ~/.zshrc
