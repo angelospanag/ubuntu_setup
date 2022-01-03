@@ -55,7 +55,7 @@ code --install-extension oderwat.indent-rainbow
 code --install-extension PKief.material-icon-theme
 
 # Python
-echo "export PATH=\$HOME/.local/bin:\"\$PATH\"" >> ~/.zshrc
+echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.zshrc
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
 source  ~/.zshrc
 pip3 install -U --user poetry flake8 pep8-naming black
