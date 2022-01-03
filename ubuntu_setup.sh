@@ -28,9 +28,13 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] 
 wget -q https://wire-app.wire.com/linux/releases.key -O- | sudo apt-key add -
 echo "deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main" | sudo tee /etc/apt/sources.list.d/wire-desktop.list
 
+# Brave
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code signal-desktop wire-desktop nodejs openrazer-meta polychromatic
+sudo apt install -y code signal-desktop wire-desktop nodejs brave-browser openrazer-meta polychromatic
 sudo gpasswd -a $USER plugdev
 
 # Snaps
