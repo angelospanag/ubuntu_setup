@@ -54,6 +54,17 @@ code --install-extension njpwerner.autodocstring
 code --install-extension oderwat.indent-rainbow
 code --install-extension PKief.material-icon-theme
 
+VS_CODE_SETTINGS="{\"workbench.colorTheme\": \"Default Dark+\",
+        \"workbench.iconTheme\": \"material-icon-theme\",
+        \"telemetry.telemetryLevel\": \"off\",
+        \"editor.fontSize\": 16,
+        \"python.formatting.provider\": \"black\",
+        \"python.linting.flake8Enabled\": true,
+        \"editor.bracketPairColorization.enabled\": true,
+        \"editor.formatOnSave\": true}"
+
+echo $VS_CODE_SETTINGS > ~/.config/Code/User/settings.json
+
 # Python
 echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.zshrc
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
