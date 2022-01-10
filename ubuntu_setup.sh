@@ -43,6 +43,7 @@ sudo snap install pycharm-professional --classic
 # Visual Studio Code extensions
 code --install-extension bungcip.better-toml
 code --install-extension dbaeumer.vscode-eslint
+code --install-extension golang.go
 code --install-extension hashicorp.terraform
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mikestead.dotenv
@@ -70,6 +71,13 @@ echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.zshrc
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
 source  ~/.zshrc
 pip3 install -U --user poetry flake8 pep8-naming black
+
+# Go
+wget https://go.dev/dl/go1.17.6.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+echo "export PATH=\"\$PATH:/usr/local/go/bin" >> ~/.zshrc
+rm go1.17.6.linux-amd64.tar.gz
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
