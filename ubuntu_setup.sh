@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https vim git keepassxc jq python3-pip python3-venv wireshark nmap pwgen steam software-properties-gtk
+sudo apt install -y curl zsh build-essential apt-transport-https wget gpg vim git keepassxc jq python3-pip python3-venv wireshark nmap pwgen steam software-properties-gtk
 
 # OhMyZsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -14,8 +14,8 @@ sudo add-apt-repository ppa:polychromatic/stable
 
 # Visual Studio Code
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
 
 # Signal Desktop
@@ -73,11 +73,11 @@ source  ~/.zshrc
 pip3 install -U --user poetry flake8 pep8-naming black
 
 # Go
-wget https://go.dev/dl/go1.17.6.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz
 echo "export PATH=\"\$PATH:/usr/local/go/bin" >> ~/.zshrc
-rm go1.17.6.linux-amd64.tar.gz
+rm go1.18.4.linux-amd64.tar.gz
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
