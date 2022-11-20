@@ -41,6 +41,8 @@ sudo gpasswd -a $USER plugdev
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
+code --install-extension bradlc.vscode-tailwindcss
+code --install-extension esbenp.prettier-vscode
 code --install-extension golang.go
 code --install-extension hashicorp.terraform
 code --install-extension mechatroner.rainbow-csv
