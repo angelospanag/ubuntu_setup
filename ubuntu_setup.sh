@@ -5,6 +5,11 @@ sudo apt install -y curl zsh build-essential apt-transport-https wget gpg vim gi
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 bash install.sh
 
+# Java
+mkdir -p /etc/apt/keyrings
+wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
+echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+ 
 # Node
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
@@ -34,7 +39,7 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code signal-desktop wire-desktop nodejs brave-browser openrazer-meta polychromatic
+sudo apt install -y code signal-desktop wire-desktop nodejs temurin-17-jdk brave-browser openrazer-meta polychromatic
 sudo gpasswd -a $USER plugdev
 
 # Snaps
@@ -43,11 +48,11 @@ sudo snap install pycharm-professional --classic
 # Visual Studio Code extensions
 code --install-extension bradlc.vscode-tailwindcss
 code --install-extension charliermarsh.ruff
+code --install-extension dotenv.dotenv-vscode
 code --install-extension esbenp.prettier-vscode
 code --install-extension golang.go
 code --install-extension hashicorp.terraform
 code --install-extension mechatroner.rainbow-csv
-code --install-extension mikestead.dotenv
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-python.black-formatter
 code --install-extension ms-python.isort
