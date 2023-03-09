@@ -5,11 +5,17 @@ sudo apt install -y curl zsh build-essential apt-transport-https wget gpg vim gi
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 bash install.sh
 
+# Python
+sudo add-apt-repository ppa:deadsnakes/ppa
+
 # Java
 mkdir -p /etc/apt/keyrings
 wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
 echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
- 
+
+# Go
+sudo add-apt-repository ppa:longsleep/golang-backports
+
 # Node
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
@@ -39,7 +45,7 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 
 # Install extra software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y code signal-desktop wire-desktop nodejs temurin-17-jdk brave-browser openrazer-meta polychromatic
+sudo apt install -y code signal-desktop wire-desktop golang-go nodejs temurin-17-jdk brave-browser openrazer-meta polychromatic
 sudo gpasswd -a $USER plugdev
 
 # Snaps
@@ -86,12 +92,6 @@ echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.zshrc
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
 source  ~/.zshrc
 pip3 install -U --user poetry ruff black ipython
-
-# Go
-wget https://go.dev/dl/go1.19.3.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
-echo "export PATH=\"\$PATH:/usr/local/go/bin" >> ~/.zshrc
-rm go1.19.3.linux-amd64.tar.gz
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
