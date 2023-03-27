@@ -91,7 +91,7 @@ echo $VS_CODE_SETTINGS > ~/.config/Code/User/settings.json
 echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.zshrc
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
 source  ~/.zshrc
-pip3 install -U --user poetry ruff black ipython
+python3.11 -m pip3 install -U --user black ipython poetry ruff
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
