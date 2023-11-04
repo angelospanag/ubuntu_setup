@@ -59,28 +59,16 @@ sudo gpasswd -a $USER plugdev
 sudo snap install pycharm-professional --classic
 
 # Visual Studio Code extensions
-code --install-extension bradlc.vscode-tailwindcss
 code --install-extension charliermarsh.ruff
-code --install-extension dotenv.dotenv-vscode
+code --install-extension dbaeumer.vscode-eslint
 code --install-extension esbenp.prettier-vscode
 code --install-extension golang.go
-code --install-extension hashicorp.terraform
-code --install-extension mechatroner.rainbow-csv
 code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.black-formatter
-code --install-extension ms-python.isort
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
-code --install-extension ms-toolsai.jupyter-keymap
-code --install-extension ms-toolsai.jupyter-renderers
-code --install-extension ms-toolsai.vscode-jupyter-cell-tags
-code --install-extension ms-toolsai.vscode-jupyter-slideshow
-code --install-extension njpwerner.autodocstring
-code --install-extension oderwat.indent-rainbow
-code --install-extension PKief.material-icon-theme
-code --install-extension rust-lang.rust-analyzer
+code --install-extension pflannery.vscode-versionlens
 code --install-extension tamasfe.even-better-toml
+code --install-extension unifiedjs.vscode-mdx
 code --install-extension yzhang.markdown-all-in-one
 
 VS_CODE_SETTINGS="{\"workbench.colorTheme\": \"Default Dark+\",
@@ -96,6 +84,7 @@ echo $VS_CODE_SETTINGS > ~/.config/Code/User/settings.json
 echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.bashrc
 pipx install poetry
 pipx install ruff
+pipx install ipython
 source  ~/.bashrc
 
 # Git config
