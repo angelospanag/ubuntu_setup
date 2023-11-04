@@ -1,5 +1,5 @@
 # Install basic software
-sudo apt install -y curl zsh build-essential apt-transport-https wget gpg vim git keepassxc jq python3-pip python3-venv pipx wireshark nmap pwgen steam software-properties-gtk
+sudo apt install -y curl ca-certificates gnupg zsh build-essential apt-transport-https wget gpg vim git keepassxc jq python3-pip python3-venv pipx wireshark nmap pwgen steam
 
 # OhMyBash
 # https://github.com/ohmybash/oh-my-bash#basic-installation
@@ -21,8 +21,6 @@ sudo add-apt-repository ppa:longsleep/golang-backports
 
 # Node
 # https://github.com/nodesource/distributions#installation-instructions
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 NODE_MAJOR=20
