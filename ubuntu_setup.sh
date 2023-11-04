@@ -93,10 +93,10 @@ VS_CODE_SETTINGS="{\"workbench.colorTheme\": \"Default Dark+\",
 echo $VS_CODE_SETTINGS > ~/.config/Code/User/settings.json
 
 # Python
-echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.zshrc
+echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.bashrc
 pipx install poetry
 pipx install ruff
-source  ~/.zshrc
+source  ~/.bashrc
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
