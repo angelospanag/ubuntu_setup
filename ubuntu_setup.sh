@@ -83,6 +83,7 @@ echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.bashrc
 pipx install ipython --python python3.12
 pipx install poetry --python python3.12
 pipx install ruff --python python3.12
+pipx ensurepath
 source  ~/.bashrc
 
 # Git config
