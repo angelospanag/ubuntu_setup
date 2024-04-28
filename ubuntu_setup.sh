@@ -8,8 +8,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 # Go
 # https://go.dev/doc/install
 wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz && rm go1.22.2.linux-amd64.tar.gz
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.bashrc
+sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz && rm go1.22.2.linux-amd64.tar.gz
+echo "export PATH=\"\$PATH:/usr/local/go/bin\"" >> ~/.bashrc
 
 # Node
 # https://nodejs.org/en/download/package-manager
