@@ -1,4 +1,5 @@
 # Install basic software
+sudo apt update && sudo apt upgrade -y
 sudo apt install -y vim git jq python3-pip python3-venv pipx nmap pwgen
 
 # OhMyBash
