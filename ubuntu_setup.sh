@@ -1,6 +1,6 @@
 # Install basic software
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y vim git jq python3-pip python3-venv pipx nmap pwgen
+sudo apt install -y vim git jq python3-pip python3-venv nmap pwgen
 
 # OhMyBash
 # https://github.com/ohmybash/oh-my-bash#basic-installation
@@ -14,17 +14,18 @@ sudo apt update && sudo apt install golang-go
 # Node
 # https://nodejs.org/en/download/package-manager
 # installs NVM (Node Version Manager)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 # download and install Node.js
 nvm install 20
 
 # Python
-echo "export POETRY_VIRTUALENVS_IN_PROJECT=1" >> ~/.bashrc
-pipx install ipython --python python3
-pipx install poetry --python python3
-pipx install ruff --python python3
-pipx ensurepath
-source  ~/.bashrc
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# Ruff
+uv tool install ruff
+# IPython
+uv tool install ipython
+uv tool update-shell
 
 # Git config
 git config --global user.email "angelospanag@protonmail.com"
