@@ -20,6 +20,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 # download and install Node.js
 nvm install 22
 
+# btop
+# https://github.com/aristocratos/btop
+sudo snap install btop
+
 # Install packages
 sudo apt update && sudo apt install -y vim git jq python3.13-pip python3.13-venv nmap pwgen golang-go
 
