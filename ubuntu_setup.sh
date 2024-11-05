@@ -25,7 +25,7 @@ nvm install 22
 sudo snap install btop
 
 # Install packages
-sudo apt update && sudo apt install -y vim git jq python3.13-pip python3.13-venv nmap pwgen golang-go
+sudo apt update && sudo apt install -y cloc git golang-go jq nmap python3.13-pip python3.13-venv pwgen vim
 
 # Python - uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
