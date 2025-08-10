@@ -1,10 +1,6 @@
 # Upgrade current packages
 sudo apt update && sudo apt upgrade -y
 
-# OhMyBash
-# https://github.com/ohmybash/oh-my-bash#basic-installation
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-
 # Go repo
 # https://launchpad.net/~longsleep/+archive/ubuntu/golang-backports
 sudo add-apt-repository ppa:longsleep/golang-backports
@@ -25,7 +21,16 @@ nvm install 22
 sudo snap install btop
 
 # Install packages
-sudo apt update && sudo apt install -y cloc git golang-go jq nmap python3.13-pip python3.13-venv pwgen vim
+sudo apt update && sudo apt install -y cloc fd-find git golang-go jq lazygit neovim nmap python3.13-pip python3.13-venv pwgen ripgrep tree
+
+# Lazyvim
+# https://www.lazyvim.org
+mv ~/.config/nvim{,.bak}
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 # Python - uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
