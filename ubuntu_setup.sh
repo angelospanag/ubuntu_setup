@@ -21,7 +21,7 @@ nvm install 22
 sudo snap install btop
 
 # Install packages
-sudo apt update && sudo apt install -y cloc fd-find git golang-go jq lazygit neovim nmap python3.13-pip python3.13-venv pwgen ripgrep tree
+sudo apt update && sudo apt install -y cloc fd-find git golang-go jq lazygit neovim nmap python3.13-pip python3.13-venv pwgen ripgrep starship tree
 
 # Lazyvim
 # https://www.lazyvim.org
